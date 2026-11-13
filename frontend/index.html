@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise RAG Chatbot</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+            <h2>Enterprise RAG</h2>
+            <p>PDF Knowledge Assistant</p>
+
+            <h3>Upload Document</h3>
+
+            <input type="file" id="pdfFile" accept=".pdf">
+
+            <button onclick="uploadPDF()">Upload PDF</button>
+
+            <p id="uploadStatus"></p>
+        </aside>
+
+        <main class="chat-area">
+
+            <header>
+                <h2>Document Assistant</h2>
+                <p>Ask questions about your uploaded PDFs.</p>
+            </header>
+
+            <div id="chatMessages" class="chat-messages">
+                <div class="message bot">
+                    Hello! Upload a PDF and ask me questions about it.
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <input
+                    type="text"
+                    id="question"
+                    placeholder="Ask something about your PDF..."
+                >
+
+                <button onclick="sendQuestion()">Send</button>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
