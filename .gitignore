@@ -1,7 +1,15 @@
+# Python
 venv/
 __pycache__/
 *.pyc
+.pytest_cache/
+
+# Environment variables
 .env
+
+# RAG generated data
 chroma_db/
 uploads/
-.pytest_cache/
+
+# IDE
+.vscode/

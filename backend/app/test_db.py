@@ -10,7 +10,9 @@ try:
         connection.execute(text("SELECT 1"))
 
     print("MySQL connected successfully!")
-    print("Documents table created successfully!")
+    print(
+        f"{Document.__tablename__.capitalize()} table created successfully!"
+    )
 
 except Exception as error:
     print("Error:", error)

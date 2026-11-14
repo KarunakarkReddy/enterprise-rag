@@ -1,3 +1,8 @@
+
+/* --------------------------------------------------
+   GLOBAL STYLES
+-------------------------------------------------- */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,108 +12,405 @@
 body {
     font-family: Arial, sans-serif;
     background: #f4f6f9;
+    color: #222;
+    min-height: 100vh;
 }
 
-.container {
-    display: flex;
-    height: 100vh;
+button,
+input,
+select {
+    font: inherit;
 }
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background: #3478f6;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #245dcc;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid #75a5ff;
+    outline-offset: 2px;
+}
+
+
+/* --------------------------------------------------
+   MAIN LAYOUT
+-------------------------------------------------- */
+
+.app-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    min-height: 0;
+    overflow: hidden;
+}
+
+
+/* --------------------------------------------------
+   SIDEBAR
+-------------------------------------------------- */
 
 .sidebar {
-    width: 280px;
+    width: 320px;
+    min-width: 280px;
+    flex-shrink: 0;
     background: #172033;
     color: white;
-    padding: 25px;
+    padding: 24px;
+    overflow-y: auto;
 }
 
 .sidebar h2 {
-    margin-bottom: 10px;
-}
-
-.sidebar p {
-    color: #b8c2d6;
     margin-bottom: 30px;
+    font-size: 23px;
 }
 
 .sidebar h3 {
     margin-bottom: 15px;
+    font-size: 17px;
 }
 
-.sidebar input {
+.upload-section,
+.documents-section {
+    margin-bottom: 30px;
+}
+
+.sidebar label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #d5deed;
+}
+
+
+/* --------------------------------------------------
+   PDF UPLOAD
+-------------------------------------------------- */
+
+input[type="file"] {
+    display: block;
     width: 100%;
-    margin-bottom: 15px;
-}
-
-button {
-    background: #2563eb;
+    margin-bottom: 12px;
     color: white;
-    border: none;
-    padding: 11px 18px;
+    font-size: 13px;
+}
+
+.upload-section button {
+    width: 100%;
+}
+
+#uploadStatus {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+
+/* --------------------------------------------------
+   DOCUMENT LIBRARY
+-------------------------------------------------- */
+
+#documentSelect {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #52617a;
     border-radius: 6px;
-    cursor: pointer;
+    margin-bottom: 15px;
+    background: white;
+    color: #222;
 }
 
-button:hover {
-    background: #1d4ed8;
+#documentList {
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
 }
 
-.chat-area {
+.document-card {
+    background: #25334b;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    overflow-wrap: anywhere;
+}
+
+.document-card p {
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.document-card small {
+    display: block;
+    color: #bdc9dc;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    background: #dc3545;
+    padding: 7px 12px;
+    font-size: 12px;
+}
+
+.delete-btn:hover {
+    background: #b02a37;
+}
+
+.refresh-btn {
+    width: 100%;
+    margin-top: 10px;
+    background: #46556e;
+}
+
+.refresh-btn:hover {
+    background: #596b87;
+}
+
+
+/* --------------------------------------------------
+   CHAT AREA
+-------------------------------------------------- */
+
+.chat-container {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 25px;
+    min-width: 0;
+    min-height: 0;
+    background: #f4f6f9;
 }
 
-header {
-    padding-bottom: 20px;
+.chat-header {
+    background: white;
+    padding: 22px;
     border-bottom: 1px solid #ddd;
+    flex-shrink: 0;
 }
 
-header p {
-    color: #666;
-    margin-top: 8px;
+.chat-header h2 {
+    font-size: 21px;
 }
+
+.chat-header p {
+    color: #666;
+    margin-top: 7px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+
+/* --------------------------------------------------
+   CHAT MESSAGES
+-------------------------------------------------- */
 
 .chat-messages {
     flex: 1;
+    min-height: 0;
+    padding: 25px;
     overflow-y: auto;
-    padding: 25px 0;
+    scroll-behavior: smooth;
 }
 
 .message {
-    padding: 15px;
+    max-width: 75%;
+    width: fit-content;
+    padding: 13px 16px;
     margin-bottom: 15px;
     border-radius: 10px;
-    max-width: 80%;
     line-height: 1.6;
     white-space: pre-wrap;
+    overflow-wrap: anywhere;
 }
 
-.user {
-    background: #dbeafe;
+.message.user {
+    background: #3478f6;
+    color: white;
     margin-left: auto;
+    border-bottom-right-radius: 3px;
 }
 
-.bot {
+.message.assistant {
     background: white;
-    border: 1px solid #ddd;
+    color: #222;
+    border: 1px solid #e2e5ea;
+    margin-right: auto;
+    border-bottom-left-radius: 3px;
 }
+
+
+/* --------------------------------------------------
+   SOURCE INFORMATION
+-------------------------------------------------- */
 
 .sources {
+    background: #e8edf5;
+    color: #344054;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    max-width: 75%;
     font-size: 13px;
-    color: #555;
-    margin-top: 12px;
+    overflow-wrap: anywhere;
 }
 
-.chat-input {
+.sources strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.sources p {
+    margin-top: 6px;
+    line-height: 1.5;
+}
+
+
+/* --------------------------------------------------
+   CHAT INPUT
+-------------------------------------------------- */
+
+.chat-input-area {
     display: flex;
+    align-items: center;
+    padding: 18px;
+    background: white;
+    border-top: 1px solid #ddd;
     gap: 10px;
+    flex-shrink: 0;
 }
 
-.chat-input input {
+.chat-input-area input {
     flex: 1;
-    padding: 14px;
+    min-width: 0;
+    padding: 13px;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 7px;
     font-size: 15px;
+}
+
+.chat-input-area input:focus {
+    border-color: #3478f6;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 120, 246, 0.12);
+}
+
+.chat-input-area button {
+    min-width: 75px;
+}
+
+
+/* --------------------------------------------------
+   ACCESSIBILITY
+-------------------------------------------------- */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* --------------------------------------------------
+   RESPONSIVE DESIGN
+-------------------------------------------------- */
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 280px;
+        min-width: 250px;
+        padding: 18px;
+    }
+
+    .message,
+    .sources {
+        max-width: 85%;
+    }
+}
+
+@media (max-width: 700px) {
+    .app-container {
+        flex-direction: column;
+        height: 100vh;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+        max-height: 42vh;
+        padding: 18px;
+    }
+
+    .sidebar h2 {
+        margin-bottom: 20px;
+    }
+
+    .upload-section,
+    .documents-section {
+        margin-bottom: 20px;
+    }
+
+    .chat-container {
+        flex: 1;
+        min-height: 0;
+    }
+
+    .chat-header {
+        padding: 15px;
+    }
+
+    .chat-messages {
+        padding: 15px;
+    }
+
+    .message,
+    .sources {
+        max-width: 95%;
+    }
+
+    .chat-input-area {
+        padding: 12px;
+    }
+
+    .chat-input-area input {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    .sidebar {
+        padding: 14px;
+    }
+
+    .chat-input-area {
+        gap: 7px;
+    }
+
+    .chat-input-area button {
+        min-width: 60px;
+        padding: 10px;
+    }
 }
