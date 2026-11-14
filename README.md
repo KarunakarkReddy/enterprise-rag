@@ -359,3 +359,6 @@ Developed as a Generative AI engineering project to explore document-based quest
 ---
 
 **If you find this project useful, consider giving the repository a star!**
+<img width="1917" height="962" alt="image" src="https://github.com/user-attachments/assets/53fc6a59-a323-48f2-a2ab-d9df871418c1" />
+<img width="1112" height="965" alt="image" src="https://github.com/user-attachments/assets/1579fde3-410f-42f4-b06d-ec71baf4458d" />
+
